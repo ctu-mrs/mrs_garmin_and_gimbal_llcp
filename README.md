@@ -1,13 +1,15 @@
-# MRS garmin LiDAR and Tarot gimbal LLCP driver
-This nodelet utilizes [MRS LLCP protocol](https://github.com/ctu-mrs/mrs_llcp_ros) with arduino device to operate 2 garmin LiDAR Lite rangefinders and Tarot GoPro Hero 9 gimbal 
+# MRS Garmin LIDAR and Tarot gimbal LLCP driver
+This nodelet utilizes [MRS LLCP protocol](https://github.com/ctu-mrs/mrs_llcp_ros) with arduino device to operate 2 garmin LIDAR Lite rangefinders and Tarot GoPro Hero 9 gimbal.
+
+It has a following structure:
 
 ```mermaid
 flowchart LR
 A[garmin_gimbal_llcp] <-->|ROS messages| B[mrs_llcp_ros]
-B <-->|UART| C[Arduino Nano]
-C<-->|I2C|D[LiDAR up]
-C<-->|I2C|E[LiDAR down]
-C <-->|SBUS packets|F[Tarot gimbal]
+B <-->|UART| C[Arduino]
+C<-->|I2C|D[LIDAR 1]
+C<-->|I2C|E[LIDAR 2]
+C <-->|SBUS|F[Tarot gimbal]
 ```
 # Requirements
 * The arduino should have the [firmware](https://github.com/ctu-mrs/mrs_garmin_and_gimbal_llcp/blob/main/firmware/garmin_gimbal_llcp.ino) installed. Don't forget to get the arduino LLCP library (see [documentation](https://github.com/ctu-mrs/mrs_llcp#using-llcp)).
