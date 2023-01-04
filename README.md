@@ -3,7 +3,7 @@ This nodelet utilizes [MRS LLCP protocol](https://github.com/ctu-mrs/mrs_llcp_ro
 
 ```mermaid
 flowchart LR
-A[mrs_garmin_and_gimbal_llcp] <-->|ROS messages| B[mrs_llcp_ros]
+A[garmin_gimbal_llcp] <-->|ROS messages| B[mrs_llcp_ros]
 B <-->|UART| C[Arduino Nano]
 C<-->|I2C|D[LiDAR up]
 C<-->|I2C|E[LiDAR down]
