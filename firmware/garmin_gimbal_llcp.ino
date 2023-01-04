@@ -31,7 +31,7 @@ uint8_t tx_buffer[TX_BUFFER_LEN];
 #define SBUS_FRAME_FOOTER_V2 0x04
 #define SBUS_STATE_FAILSAFE 0x08
 #define SBUS_STATE_SIGNALLOSS 0x04
-#define SBUS_UPDATE_RATE 16 //ms
+#define SBUS_UPDATE_RATE 17 //ms
 
 SoftwareSerial swSerial(10, 4, true); // RX, TX
 
