@@ -17,7 +17,7 @@ C <-->|SBUS packets|F[Tarot gimbal]
 * Correctly set  `.rules` file in `/etc/udev/rules.d`, the LED module portname is `arduino`
   * For example, on a T650 drone, with the LED module in 2nd module slot, the `99-usb-serial_T650_PCB.rules` file includes this line:
   ```bash
-   SUBSYSTEM=="tty", ATTRS{idVendor}=="0403", ATTRS{idProduct}=="6011", ENV{ID_USB_INTERFACE_NUM}=="02", SYMLINK+="arduino",OWNER="mrs",MODE="0666"
+   SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="7523", SYMLINK+="arduino",OWNER="mrs",MODE="0666"
   ```
   * Of course, the `OWNER` and `ENV{ID_USB_INTERFACE_NUM}` parameters have to correspond with your setup
 * Wire connection between the onboard computer and arduino device
