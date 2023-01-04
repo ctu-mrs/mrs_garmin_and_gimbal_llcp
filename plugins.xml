@@ -1,0 +1,5 @@
+<library path="lib/libGarminGimbalLlcp">
+  <class name="garmin_gimbal_llcp/GarminGimbalLlcp" type="garmin_gimbal_llcp::GarminGimbalLlcp" base_class_type="nodelet::Nodelet">
+    <description>GarminGimbalLlcp nodelet</description>
+  </class>
+</library>
