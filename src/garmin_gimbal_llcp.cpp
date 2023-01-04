@@ -9,7 +9,7 @@
 #include <pluginlib/class_list_macros.h>
 
 #include "../firmware/garmin_msgs.h"
-#include "../firmware/tarot_gimbal_controller_llcp.h"
+#include "../firmware/tarot_gimbal_msgs.h"
 
 // garmin specs
 #define MAX_RANGE 4000  // cm
