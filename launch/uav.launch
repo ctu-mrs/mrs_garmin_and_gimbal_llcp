@@ -31,8 +31,8 @@
       <param name="use_timeout" value="false"/>
       <param name="swap_garmins" value="$(arg swap_garmins)"/>
      
-      <remap from="~llcp_in" to="llcp_2/received_message" />
-      <remap from="~llcp_out" to="llcp_2/send_message" />
+      <remap from="~llcp_in" to="llcp/received_message" />
+      <remap from="~llcp_out" to="llcp/send_message" />
 
       <remap from="~range" to="/$(arg UAV_NAME)/garmin/range" />
       <remap from="~range_up" to="/$(arg UAV_NAME)/garmin/range_up" />
@@ -42,7 +42,7 @@
 
   </group>
 
-  <include file="$(find mrs_llcp_ros)/launch/llcp_2.launch" >
+  <include file="$(find mrs_llcp_ros)/launch/llcp.launch" >
 
     <arg name="baudrate" value="115200" />
     <arg name="portname" value="/dev/arduino" />

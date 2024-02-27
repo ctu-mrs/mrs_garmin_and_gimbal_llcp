@@ -1,7 +1,7 @@
 #include <ros/package.h>
 #include <ros/ros.h>
-#include <mrs_msgs/Llcp.h>
-#include <mrs_msgs/TarotGimbalState.h>
+#include <mrs_modules_msgs/Llcp.h>
+#include <mrs_msgs/GimbalState.h>
 #include <sensor_msgs/Range.h>
 #include <string>
 
@@ -30,8 +30,8 @@ private:
   ros::Timer send_timer_;
   // Declaring our callbacks
   void callbackSendTimer(const ros::TimerEvent &event);
-  void callbackReceiveMessage(const mrs_msgs::LlcpConstPtr &msg);
-  void callbackReceiveTarotGimbalCommand(const mrs_msgs::TarotGimbalState &msg);
+  void callbackReceiveMessage(const mrs_modules_msgs::LlcpConstPtr &msg);
+  void callbackReceiveTarotGimbalCommand(const mrs_msgs::GimbalState &msg);
 
   ros::NodeHandle nh_;
   
@@ -94,7 +94,7 @@ void GarminGimbalLlcp::onInit() {
   tarot_gimbal_frame_   = uav_name_ + "/gimbal";
   
   // Initialize LLCP publisher and subscriber
-  llcp_publisher_ = nh_.advertise<mrs_msgs::Llcp>("llcp_out", 1);
+  llcp_publisher_ = nh_.advertise<mrs_modules_msgs::Llcp>("llcp_out", 1);
   llcp_subscriber_ = nh_.subscribe("llcp_in", 10, &GarminGimbalLlcp::callbackReceiveMessage, this, ros::TransportHints().tcpNoDelay());
   
   // Initialize publisher and subscriber for the gimbal control
@@ -111,14 +111,14 @@ void GarminGimbalLlcp::onInit() {
 /** callbackReceiveTarotGimbalCommand() **/
 /* waiting for message from MRS Status and then sending it via LLCP to the tarot gimbal */
 
-void GarminGimbalLlcp::callbackReceiveTarotGimbalCommand(const mrs_msgs::TarotGimbalState &msg) {
+void GarminGimbalLlcp::callbackReceiveTarotGimbalCommand(const mrs_msgs::GimbalState &msg) {
 
   if (!is_initialized_) {
     return;
   }
 
   gimbal_set_channels_msg msg_out;
-  mrs_msgs::Llcp llcp_msg;
+  mrs_modules_msgs::Llcp llcp_msg;
   
   /*  
    * Uncomment for debug
@@ -151,7 +151,7 @@ void GarminGimbalLlcp::callbackReceiveTarotGimbalCommand(const mrs_msgs::TarotGi
 
 /** callbackReceiveMessage() **/
 /* callback for incoming LLCP messages  */
-void GarminGimbalLlcp::callbackReceiveMessage(const mrs_msgs::LlcpConstPtr &msg) {
+void GarminGimbalLlcp::callbackReceiveMessage(const mrs_modules_msgs::LlcpConstPtr &msg) {
 
   if (!is_initialized_) {
     return;
@@ -238,7 +238,7 @@ void GarminGimbalLlcp::callbackReceiveMessage(const mrs_msgs::LlcpConstPtr &msg)
     case GIMBAL_STATUS_MSG_ID: {
 
       gimbal_status_msg *received_msg = (gimbal_status_msg *)payload_array;
-      mrs_msgs::TarotGimbalState gimbal_state_msg;
+      mrs_msgs::GimbalState gimbal_state_msg;
     
       /*
        * Uncomment for debug

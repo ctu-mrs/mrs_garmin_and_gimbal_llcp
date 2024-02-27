@@ -9,13 +9,14 @@ find_package(catkin REQUIRED COMPONENTS
   cmake_modules
   nodelet
   mrs_msgs
+  mrs_modules_msgs
   )
 
 
 catkin_package(
   INCLUDE_DIRS
   LIBRARIES GarminGimbalLlcp
-  CATKIN_DEPENDS roscpp mrs_msgs
+  CATKIN_DEPENDS roscpp mrs_msgs mrs_modules_msgs
   )
 
 include_directories(

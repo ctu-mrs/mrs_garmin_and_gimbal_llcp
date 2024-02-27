@@ -19,6 +19,7 @@
   <depend>cmake_modules</depend>
   <depend>nodelet</depend>
   <depend>mrs_msgs</depend>
+  <depend>mrs_modules_msgs</depend>
 
   <export>
 
